@@ -35,14 +35,26 @@ body {
 
 #start{
 	color: green;
+	height: 60px;
+	width: 60px;
+	padding: 0;
+	border-radius: 50%;
 }
 
 #stop{
 	color: red;
+	height: 60px;
+	width: 60px;
+	padding: 0;
+	border-radius: 50%;
 }
 
 #reset{
 	color: yellow;
+	height: 60px;
+	width: 60px;
+	padding: 0;
+	border-radius: 50%;
 }
 
 #toggle-mode{
