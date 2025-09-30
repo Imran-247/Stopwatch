@@ -1,0 +1,81 @@
+body {
+	background: #f5f5f5;
+	color: #222;
+	font-family: 'Segoe UI', Arial, sans-serif;
+	transition: background 0.3s, color 0.3s;
+}
+
+.container {
+	max-width: 400px;
+	margin: 60px auto;
+	padding: 32px;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+	text-align: center;
+}
+
+#stopwatch {
+	font-size: 2.5rem;
+	margin: 24px 0;
+	letter-spacing: 2px;
+}
+
+.buttons button, #toggle-mode {
+	margin: 8px;
+	padding: 10px 24px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 8px;
+	background: #e0e0e0;
+	color: #222;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+}
+
+#start{
+	color: green;
+}
+
+#stop{
+	color: red;
+}
+
+#reset{
+	color: yellow;
+}
+
+#toggle-mode{
+	height: 50px;
+	width: 50px;
+	font-size: 1.5rem;
+	padding: 0;
+	border-radius: 50%;
+}
+
+#toggle-mode i:last-child {
+	display: none;
+}
+
+.buttons button:hover, #toggle-mode:hover {
+	background: #bdbdbd;
+}
+
+body.dark-mode {
+	background: #181a20;
+	color: #f5f5f5;
+}
+
+body.dark-mode .container {
+	background: #23272f;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.32);
+}
+
+body.dark-mode .buttons button, body.dark-mode #toggle-mode {
+	background: #2c313c;
+	color: #f5f5f5;
+}
+
+body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
+	background: #3a3f4b;
+}
