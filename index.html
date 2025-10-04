@@ -4,22 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Stopwatch</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<div class="top-flex">
+		<h4>NAME: OAMEN IMRAN</h4>
+		<h4>ID: ALT/SOE/025/3109</h4>
+		<h4>TRACK: FRONT-END</h4>
+		<input type="checkbox" id="toggle-mode" hidden>
+		<label for="toggle-mode" class="toggle-btn">
+			<span class="material-icons sun">wb_sunny</span>
+			<span class="material-icons moon">dark_mode</span>
+		</label>
+	</div>
 	<div class="container">
-		<h1>Stopwatch</h1>
+		<h2 class="stop-watch"><i class="fa-solid fa-stopwatch"></i> Stopwatch</h2>
 		<div id="stopwatch">00:00:00.00</div>
 		<div class="buttons">
 			<button id="start">Start</button>
 			<button id="stop">Stop</button>
 			<button id="reset">Reset</button>
+			<button id="lap">Lap</button>
 		</div>
-		<button id="toggle-mode">
-			<i class="fa-solid fa-moon" id="moon"></i>
-			<i class="fa-solid fa-sun" id="sun"></i>
-		</button>
+		<ul id="laps" class="lap-list"></ul>
 	</div>
 	<script src="script.js"></script>
 </body>

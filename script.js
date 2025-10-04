@@ -3,10 +3,13 @@ let elapsedTime = 0;
 let timerInterval;
 let running = false;
 
+
 const stopwatch = document.getElementById('stopwatch');
 const startBtn = document.getElementById('start');
 const pauseBtn = document.getElementById('stop');
 const resetBtn = document.getElementById('reset');
+const lapBtn = document.getElementById('lap');
+const lapsList = document.getElementById('laps');
 const toggleModeBtn = document.getElementById('toggle-mode');
 
 function formatTime(ms) {
@@ -50,9 +53,33 @@ startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
 
+
+// Lap functionality
+lapBtn.addEventListener('click', () => {
+	if (running) {
+		const lapTime = formatTime(elapsedTime);
+		const li = document.createElement('li');
+		li.textContent = `Lap ${lapsList.children.length + 1}: ${lapTime}`;
+		lapsList.appendChild(li);
+	}
+});
+
 // Dark/Light mode toggle
 toggleModeBtn.addEventListener('click', () => {
 	document.body.classList.toggle('dark-mode');
+});
+
+// Clear laps on reset
+function clearLaps() {
+	lapsList.innerHTML = '';
+}
+
+// Update resetTimer to clear laps
+const originalResetTimer = resetTimer;
+resetBtn.removeEventListener('click', resetTimer);
+resetBtn.addEventListener('click', () => {
+	originalResetTimer();
+	clearLaps();
 });
 
 // Initialize display

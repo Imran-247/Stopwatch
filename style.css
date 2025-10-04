@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=poppins:wght@400;700\&display=swap');
+/* Global styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins' sans-serif;
+}
+
+/* Style for the body */
 body {
 	background: #f5f5f5;
 	color: #222;
@@ -5,6 +15,60 @@ body {
 	transition: background 0.3s, color 0.3s;
 }
 
+/* Style for the top section */
+.top-flex {
+	text-align: start;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	color: #fff;
+	background: #000;
+}
+
+/* Style for material icons */
+.material-icons {
+	font-size: 24px;
+	cursor: pointer;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Style for the toggle button */
+.toggle-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50px;
+	cursor: pointer;
+	position: relative;
+}
+
+.toggle-btn .sun{
+	color: orange;
+}
+
+/* Hide the moon icon initially */
+.toggle-btn .moon{
+	position: absolute;
+	opacity: 0;
+	transform: scale(0.7);
+	color: grey;
+}
+
+/* toggle when check-box is checked */
+#toggle-mode:checked + .toggle-btn .sun {
+	opacity: 0;
+	transform: scale(0.7);
+}
+
+/* Show the moon icon when checked */
+#toggle-mode:checked + .toggle-btn .moon {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Style for the main container */
 .container {
 	max-width: 400px;
 	margin: 60px auto;
@@ -13,15 +77,23 @@ body {
 	border-radius: 16px;
 	box-shadow: 0 4px 24px rgba(0,0,0,0.12);
 	text-align: center;
+	justify-content: center;
 }
 
+.container .fa-stopwatch{
+	color: #ff3d00;
+	margin-right: 8px;
+}
+
+/* Style for the stopwatch display */
 #stopwatch {
 	font-size: 2.5rem;
 	margin: 24px 0;
 	letter-spacing: 2px;
 }
 
-.buttons button, #toggle-mode {
+/* Style for the buttons */
+.buttons button{
 	margin: 8px;
 	padding: 10px 24px;
 	font-size: 1rem;
@@ -33,6 +105,7 @@ body {
 	transition: background 0.2s, color 0.2s;
 }
 
+/* Specific styles for start, stop, and reset buttons */
 #start{
 	color: green;
 	height: 60px;
@@ -57,37 +130,38 @@ body {
 	border-radius: 50%;
 }
 
-#toggle-mode{
-	height: 50px;
-	width: 50px;
-	font-size: 1.5rem;
+.buttons #lap{
+	color: blue;
+	height: 60px;
+	width: 60px;
 	padding: 0;
 	border-radius: 50%;
 }
 
-#toggle-mode i:last-child {
-	display: none;
-}
-
+/* Hover effects for buttons */
 .buttons button:hover, #toggle-mode:hover {
 	background: #bdbdbd;
 }
 
+/* Dark mode styles */
 body.dark-mode {
 	background: #181a20;
 	color: #f5f5f5;
 }
 
+/* Dark mode styles for specific elements */
 body.dark-mode .container {
 	background: #23272f;
 	box-shadow: 0 4px 24px rgba(0,0,0,0.32);
 }
 
+/* Dark mode styles for buttons */
 body.dark-mode .buttons button, body.dark-mode #toggle-mode {
 	background: #2c313c;
 	color: #f5f5f5;
 }
 
+/* Dark mode hover effects for buttons */
 body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
 	background: #3a3f4b;
 }
