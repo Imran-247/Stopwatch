@@ -44,6 +44,7 @@ body {
 	position: relative;
 }
 
+/* Hide the sun icon */
 .toggle-btn .sun{
 	color: orange;
 }
@@ -80,8 +81,9 @@ body {
 	justify-content: center;
 }
 
+/* Style for stop watch icon */
 .container .fa-stopwatch{
-	color: #ff3d00;
+	color: #ff0000;
 	margin-right: 8px;
 }
 

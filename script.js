@@ -1,9 +1,10 @@
+// Stopwatch functionality
 let startTime = 0;
 let elapsedTime = 0;
 let timerInterval;
 let running = false;
 
-
+// DOM elements
 const stopwatch = document.getElementById('stopwatch');
 const startBtn = document.getElementById('start');
 const pauseBtn = document.getElementById('stop');
@@ -12,6 +13,7 @@ const lapBtn = document.getElementById('lap');
 const lapsList = document.getElementById('laps');
 const toggleModeBtn = document.getElementById('toggle-mode');
 
+// Format time as HH:MM:SS.CSS
 function formatTime(ms) {
 	const centiseconds = Math.floor((ms % 1000) / 10);
 	const seconds = Math.floor((ms / 1000) % 60);
@@ -20,10 +22,12 @@ function formatTime(ms) {
 	return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(centiseconds).padStart(2, '0')}`;
 }
 
+// Update stopwatch display
 function updateDisplay() {
 	stopwatch.textContent = formatTime(elapsedTime);
 }
 
+// Start, Pause, Reset functions
 function startTimer() {
 	if (!running) {
 		running = true;
@@ -35,6 +39,7 @@ function startTimer() {
 	}
 }
 
+// Pause function
 function pauseTimer() {
 	if (running) {
 		running = false;
@@ -42,6 +47,7 @@ function pauseTimer() {
 	}
 }
 
+// Reset function
 function resetTimer() {
 	running = false;
 	clearInterval(timerInterval);
@@ -49,6 +55,7 @@ function resetTimer() {
 	updateDisplay();
 }
 
+// Event listeners
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
