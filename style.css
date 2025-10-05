@@ -17,9 +17,9 @@ body {
 
 /* Style for the top section */
 .top-flex {
-	text-align: start;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 20px;
 	color: #fff;
 	background: #000;
