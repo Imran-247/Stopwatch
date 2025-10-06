@@ -22,7 +22,16 @@ body {
 	align-items: center;
 	padding: 20px;
 	color: #fff;
-	background: #000;
+	background-color: #181a20;
+}
+
+/* Style for the logo image */
+.top-flex .logo{
+	height: 60px;
+	width: auto;
+	background-color: #fff;
+	border-radius: 25px;
+	cursor: pointer;
 }
 
 /* Style for material icons */
