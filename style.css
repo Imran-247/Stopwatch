@@ -181,53 +181,25 @@ body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
 	background: #3a3f4b;
 }
 
-/* Style for the footer */
-.content{
-	padding: 30px;
-	align-items: center;
-	background-color: #222;
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+	.container {
+		margin: 20px;
+		padding: 20px;
+	}
+	
+	#stopwatch {
+		font-size: 2rem;
+	}
+	
+	.buttons button {
+		margin: 6px;
+		padding: 8px 16px;
+		font-size: 0.9rem;
+	}
+	
+	.buttons #start, .buttons #stop, .buttons #reset, .buttons #lap {
+		height: 50px;
+		width: 50px;
+	}
 }
-
-/* Style for media icons in the footer */
-.content .media-icons{
-	font-size: 20px;
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
-	place-items: center;
-	color: #fff;
-	margin: 0 15px;
-	cursor: pointer;
-	transition: transform 0.3s ease;
-}
-
-/* Style for media icons */
-.content .media-icons a{
-	text-decoration: none;
-	margin: 0 10px;
-}
-
-.content .media-icons a#facebook{
-	color: #0000ff;
-}
-
-.content .media-icons a#linkedin{
-	color: #0000ff;
-}
-
-.content .media-icons a#twitter{
-	color: #87ceeb;
-}
-
-.content .media-icons a#instagram{
-	color: #be2929;
-}
-
-.content .media-icons a#github{
-	color: #f61af6;
-}
-
-.cotent .media-icons a#facebook{
-	color: #3b5998;
-}
-
