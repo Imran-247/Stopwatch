@@ -231,25 +231,3 @@ body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
 	color: #3b5998;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 480px) {
-	.container {
-		margin: 20px;
-		padding: 20px;
-	}
-	
-	#stopwatch {
-		font-size: 2rem;
-	}
-	
-	.buttons button {
-		margin: 6px;
-		padding: 8px 16px;
-		font-size: 0.9rem;
-	}
-	
-	.buttons #start, .buttons #stop, .buttons #reset, .buttons #lap {
-		height: 50px;
-		width: 50px;
-	}
-}
