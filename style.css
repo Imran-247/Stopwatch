@@ -91,7 +91,6 @@ body {
 	max-width: 420px;
 	width: 100%;
 	margin: auto; /* this will center it between header (top-flex) and footer when body is flex column */
-	padding: 32px;
 	background: #fff;
 	border-radius: 16px;
 	box-shadow: 0 4px 24px rgba(0,0,0,0.12);
@@ -305,7 +304,6 @@ footer{
 @media (min-width: 481px) and (max-width: 768px) {
 	.container{
 		max-width: 540px;
-		padding: 26px;
 	}
 
 	#stopwatch{ font-size: 2.15rem; }
@@ -319,7 +317,6 @@ footer{
 @media (min-width: 769px) and (max-width: 1024px) {
 	.container{
 		max-width: 640px;
-		padding: 30px;
 	}
 
 	#stopwatch{ font-size: 2.25rem; }
