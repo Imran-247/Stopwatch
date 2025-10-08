@@ -231,7 +231,6 @@ body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
 footer{
 	margin-top: auto; /* pushes footer to bottom in a column flex layout */
 	bottom: 0;
-	width: 100%;
 }
 
 /* Style for media icons in the footer */
@@ -280,7 +279,6 @@ footer{
 /* Responsive design for smaller screens */
 @media (max-width: 480px) {
 	.container {
-		margin: 24px 12px;
 		padding: 20px;
 	}
 
@@ -308,7 +306,6 @@ footer{
 	.container{
 		max-width: 540px;
 		padding: 26px;
-		margin: 28px 16px;
 	}
 
 	#stopwatch{ font-size: 2.15rem; }
