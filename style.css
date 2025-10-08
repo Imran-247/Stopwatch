@@ -96,6 +96,8 @@ body {
 	border-radius: 16px;
 	box-shadow: 0 4px 24px rgba(0,0,0,0.12);
 	text-align: center;
+	justify-content: center;
+	place-items: center;
 }
 
 /* Style for stop watch icon */
@@ -178,7 +180,6 @@ body {
 	width: 100%;
 	max-height: 220px;
 	overflow: auto;
-	text-align: left;
 	border-top: 1px dashed rgba(0,0,0,0.06);
 }
 
@@ -219,8 +220,8 @@ body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
 /* Style for the footer */
 .content{
 	height: auto;
-	width: 100%;
 	padding: 20px 16px;
+	bottom: 0;
 	align-items: center;
 	background-color: #222;
 	color: #fff;
@@ -229,6 +230,8 @@ body.dark-mode .buttons button:hover, body.dark-mode #toggle-mode:hover {
 /* Make footer sit at the bottom of the page */
 footer{
 	margin-top: auto; /* pushes footer to bottom in a column flex layout */
+	bottom: 0;
+	width: 100%;
 }
 
 /* Style for media icons in the footer */
