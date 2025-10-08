@@ -87,8 +87,6 @@ body {
 
 /* Style for the main container */
 .container {
-	/* Center container horizontally and vertically between header and footer */
-	max-width: 420px;
 	width: 100%;
 	margin: auto; /* this will center it between header (top-flex) and footer when body is flex column */
 	background: #fff;
@@ -304,6 +302,7 @@ footer{
 @media (min-width: 481px) and (max-width: 768px) {
 	.container{
 		max-width: 540px;
+		padding: 24px;
 	}
 
 	#stopwatch{ font-size: 2.15rem; }
@@ -317,6 +316,7 @@ footer{
 @media (min-width: 769px) and (max-width: 1024px) {
 	.container{
 		max-width: 640px;
+		padding: 32px;
 	}
 
 	#stopwatch{ font-size: 2.25rem; }
@@ -326,6 +326,7 @@ footer{
 @media (min-width: 1025px) {
 	.container{
 		max-width: 760px;
+		padding: 32px;
 	}
 
 	#stopwatch{ font-size: 2.6rem; }
