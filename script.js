@@ -7,6 +7,9 @@ let running = false;
 // Storage keys
 const THEME_KEY = 'stopwatch_theme'; // 'dark' | 'light' | undefined (system)
 const LAPS_KEY = 'stopwatch_laps';
+const RUNNING_KEY = 'stopwatch_running';
+const START_KEY = 'stopwatch_start'; // timestamp when timer was (re)started
+const ELAPSED_KEY = 'stopwatch_elapsed'; // elapsed time in ms when paused or last saved
 
 // DOM elements
 const stopwatch = document.getElementById('stopwatch');
@@ -74,6 +77,45 @@ resetBtn.addEventListener('click', () => {
 	laps = [];
 });
 
+// Persist stopwatch state helpers
+function saveRunningState() {
+	try {
+		localStorage.setItem(RUNNING_KEY, running ? '1' : '0');
+		if (running) {
+			// save the absolute start timestamp so elapsed can be computed after reload
+			const startTs = Date.now() - elapsedTime;
+			localStorage.setItem(START_KEY, String(startTs));
+			localStorage.removeItem(ELAPSED_KEY);
+		} else {
+			// save elapsed time when paused/stopped
+			localStorage.setItem(ELAPSED_KEY, String(elapsedTime));
+			localStorage.removeItem(START_KEY);
+		}
+	} catch (err) {
+		console.warn('Could not persist stopwatch state', err);
+	}
+}
+
+// Ensure state is saved when user interacts
+// Save on start/pause/reset actions
+const origStart = startTimer;
+startBtn.removeEventListener('click', startTimer);
+startBtn.addEventListener('click', () => { origStart(); saveRunningState(); });
+
+const origPause = pauseTimer;
+pauseBtn.removeEventListener('click', pauseTimer);
+pauseBtn.addEventListener('click', () => { origPause(); saveRunningState(); });
+
+const origResetHandler = () => {
+	// clear persisted stopwatch state as well
+	localStorage.removeItem(RUNNING_KEY);
+	localStorage.removeItem(START_KEY);
+	localStorage.removeItem(ELAPSED_KEY);
+};
+// wrap the reset listener to also clear state
+resetBtn.removeEventListener('click', () => {});
+resetBtn.addEventListener('click', () => { origResetHandler(); });
+
 // Lap functionality: record lap and persist
 lapBtn.addEventListener('click', () => {
 	if (running) {
@@ -83,6 +125,20 @@ lapBtn.addEventListener('click', () => {
 		saveLaps();
 	}
 });
+
+// Also save state periodically (in case browser/tab closes while running)
+setInterval(() => {
+	if (running) {
+		// only need to persist start timestamp (computed from elapsed) and running flag
+		try {
+			localStorage.setItem(RUNNING_KEY, '1');
+			const startTs = Date.now() - elapsedTime;
+			localStorage.setItem(START_KEY, String(startTs));
+		} catch (err) {
+			// ignore
+		}
+	}
+}, 1000);
 
 // Theme handling: use saved preference or system default
 function applyTheme(isDark) {
@@ -158,6 +214,31 @@ function init() {
 	initTheme();
 	laps = loadLaps();
 	renderLaps();
+	// Restore stopwatch state
+	try {
+		const runningRaw = localStorage.getItem(RUNNING_KEY);
+		const savedStart = localStorage.getItem(START_KEY);
+		const savedElapsed = localStorage.getItem(ELAPSED_KEY);
+
+		if (runningRaw === '1' && savedStart) {
+			// timer was running: compute elapsed based on saved start timestamp
+			startTime = Number(savedStart);
+			elapsedTime = Date.now() - startTime;
+			// start the interval so the timer continues
+			running = true;
+			timerInterval = setInterval(() => {
+				elapsedTime = Date.now() - startTime;
+				updateDisplay();
+			}, 10);
+		} else if (savedElapsed) {
+			// timer was paused/stopped: restore elapsed
+			elapsedTime = Number(savedElapsed) || 0;
+			running = false;
+		}
+	} catch (err) {
+		console.warn('Could not restore stopwatch state', err);
+	}
+
 	updateDisplay();
 
 	// If user changes system theme while page is open, respect if they haven't chosen a preference
